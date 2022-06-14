@@ -1,9 +1,7 @@
 import { createStore } from "vuex";
-
+import visibility from "./modules/visibility";
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    visibility,
+  },
 });

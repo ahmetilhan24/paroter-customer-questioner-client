@@ -4,7 +4,11 @@
       <img src="@/assets/img/logo.svg" alt="Logo" />
     </div>
     <div class="app-header__right">
-      <button class="close-btn circle-btn circle-btn--gray" vertical-center>
+      <button
+        class="close-btn circle-btn circle-btn--gray"
+        @click="closeParoter"
+        vertical-center
+      >
         <svg
           width="16"
           height="2"
@@ -19,8 +23,17 @@
   </header>
 </template>
 <script lang="js">
+import { mapMutations } from 'vuex'
 export default {
-    name: "AppHeader"
+    name: "AppHeader",
+    methods: {
+        ...mapMutations({
+            setPopupVisible: "setPopupVisible"
+        }),
+        closeParoter(){
+            this.setPopupVisible(false)
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
