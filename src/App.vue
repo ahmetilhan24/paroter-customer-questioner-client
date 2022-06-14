@@ -20,11 +20,14 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-@import "./assets/sass/style.scss";
+<style lang="scss">
+@import "./assets/sass/_style.scss";
 .paroter-container {
   position: fixed;
   right: 30px;
   bottom: 30px;
+  .paroter-popup {
+    width: 100%;
+  }
 }
 </style>
