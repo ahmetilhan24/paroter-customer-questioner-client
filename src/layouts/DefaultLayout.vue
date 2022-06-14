@@ -1,7 +1,9 @@
 <template>
   <main class="default-layout">
     <app-header />
-    <slot />
+    <div class="default-layout__content">
+      <slot />
+    </div>
   </main>
 </template>
 <script lang="js">
@@ -22,5 +24,8 @@ export default {
   background-color: $white;
   border: 2px solid $gray-one;
   padding: $space-one;
+  &__content {
+    padding: 21px 0;
+  }
 }
 </style>

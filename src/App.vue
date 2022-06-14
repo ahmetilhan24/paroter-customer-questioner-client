@@ -2,7 +2,9 @@
   <div class="paroter-container">
     <!--Popup content-->
     <div class="paroter-popup">
-      <default-layout> </default-layout>
+      <default-layout>
+        <home-page v-if="isPage === 'home'" />
+      </default-layout>
     </div>
     <!--Show button-->
     <div class="show-button" v-if="false">
@@ -13,11 +15,18 @@
 
 <script lang="js">
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import HomePage from '@/pages/HomePage.vue';
 export default {
   name: "App",
   components: {
-    DefaultLayout
+    DefaultLayout,
+    HomePage
   },
+  computed: {
+    isPage() {
+      return 'home'
+    }
+  }
 };
 </script>
 <style lang="scss">

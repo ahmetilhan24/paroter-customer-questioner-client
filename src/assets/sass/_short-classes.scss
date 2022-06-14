@@ -23,3 +23,19 @@
     background-color: $gray-one;
   }
 }
+
+.big-btn {
+  padding: 17px 0;
+  border-radius: $radius-one;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  &--gray {
+    background-color: $gray-one;
+    color: $black;
+  }
+  &--blue {
+    background-color: $blue-one;
+    color: $white;
+  }
+}

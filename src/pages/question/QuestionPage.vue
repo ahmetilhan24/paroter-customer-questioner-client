@@ -4,6 +4,6 @@
 
 <script lang="js">
 export default {
-  name: "QuestionTab"
+  name: "QuestionPage"
 };
 </script>
