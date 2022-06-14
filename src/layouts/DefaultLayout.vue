@@ -19,7 +19,6 @@ export default {
 <style lang="scss" scoped>
 .default-layout {
   width: 383px;
-  height: 341px;
   border-radius: $radius-one;
   background-color: $white;
   border: 2px solid $gray-one;

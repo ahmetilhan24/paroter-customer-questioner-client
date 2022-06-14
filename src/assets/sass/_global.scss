@@ -7,4 +7,18 @@
   button {
     cursor: pointer;
   }
+  input,
+  textarea {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid $gray-one;
+    padding: 10px;
+  }
+  input {
+    height: 36px;
+  }
+  textarea {
+    height: 60px;
+    resize: vertical;
+  }
 }

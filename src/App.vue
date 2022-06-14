@@ -4,7 +4,8 @@
     <transition name="fade">
       <div class="paroter-popup" v-if="popupVisible">
         <default-layout>
-          <home-page v-if="isPage === 'home'" />
+          <home-tab v-if="activeTab === HOME_TAB_NAME" />
+          <question-tab v-if="activeTab === QUESTION_TAB_NAME" />
         </default-layout>
       </div>
     </transition>
@@ -12,7 +13,7 @@
     <transition name="fade">
       <div class="show-button" v-if="showBtnVisible">
         <button
-          class="circle-btn circle-btn--gray"
+          class="circle-btn circle-btn--white"
           @click="openParoter"
           vertical-center
         >
@@ -25,28 +26,31 @@
 
 <script lang="js">
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
-import HomePage from '@/pages/HomePage.vue';
+import HomeTab from '@/tabs/HomeTab.vue';
+import QuestionTab from '@/tabs/question/QuestionTab.vue';
 import { mapState, mapMutations } from 'vuex';
+import { QUESTION_TAB_NAME, HOME_TAB_NAME } from "@/constants/tab.constants.js";
 export default {
   name: "App",
+  components: {
+    DefaultLayout,
+    HomeTab,
+    QuestionTab
+  },
   data() {
     return {
       showBtnVisible: true,
-      popupVisible: false,
+      popupVisible: true,
+      QUESTION_TAB_NAME,
+      HOME_TAB_NAME
     }
-  },
-  components: {
-    DefaultLayout,
-    HomePage
   },
   computed: {
     ...mapState({
       isParoterVisible: store => store.visibility.isParoterVisible,
-      isPopupVisible: store => store.visibility.isPopupVisible
+      isPopupVisible: store => store.visibility.isPopupVisible,
+      activeTab: store => store.tab.activeTab
     }),
-    isPage() {
-      return 'home'
-    }
   },
   watch: {
     isPopupVisible(newVal) {
