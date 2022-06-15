@@ -12,12 +12,8 @@
     </transition>
     <!--Show button-->
     <transition name="fade">
-      <div class="show-button" v-if="showBtnVisible">
-        <button
-          class="circle-btn circle-btn--white"
-          @click="openParoter"
-          vertical-center
-        >
+      <div class="show-button" v-if="showBtnVisible" vertical-center>
+        <button class="circle-btn" @click="openParoter" vertical-center>
           <img src="@/assets/img/logo.svg" alt="" />
         </button>
       </div>
@@ -90,6 +86,15 @@ export default {
   bottom: 30px;
   .paroter-popup {
     width: 100%;
+  }
+  .show-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $blue-one;
+    button {
+      background-color: $blue-one;
+    }
   }
 }
 </style>

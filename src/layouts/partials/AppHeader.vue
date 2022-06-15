@@ -5,7 +5,7 @@
     </div>
     <div class="app-header__right">
       <button
-        class="close-btn circle-btn circle-btn--gray"
+        class="close-btn circle-btn circle-btn--white"
         @click="closeParoter"
         vertical-center
       >
@@ -38,6 +38,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .app-header {
+  position: relative;
+  z-index: 22;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 </style>
