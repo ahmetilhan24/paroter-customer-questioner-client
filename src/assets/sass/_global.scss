@@ -10,7 +10,7 @@
   input,
   textarea {
     width: 100%;
-    border-radius: 5px;
+    border-radius: $radius-four;
     border: 2px solid $gray-one;
     padding: 10px;
   }

@@ -4,14 +4,17 @@
     <div class="default-layout__content">
       <slot />
     </div>
+    <app-footer />
   </main>
 </template>
 <script lang="js">
 import AppHeader from '@/layouts/partials/AppHeader.vue'
+import AppFooter from './partials/AppFooter.vue'
 export default {
     name: "DefaultLayout",
     components: {
-        AppHeader
+        AppHeader,
+        AppFooter
     }
 }
 </script>
