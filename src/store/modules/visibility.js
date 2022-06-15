@@ -1,6 +1,6 @@
 const state = {
   isParoterVisible: true,
-  isPopupVisible: true,
+  isPopupVisible: false,
 };
 const getters = {};
 const mutations = {

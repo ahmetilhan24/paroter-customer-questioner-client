@@ -6,6 +6,7 @@
         <default-layout>
           <home-tab v-if="activeTab === HOME_TAB_NAME" />
           <question-tab v-if="activeTab === QUESTION_TAB_NAME" />
+          <feedback-tab v-if="activeTab === FEEDBACK_TAB_NAME" />
         </default-layout>
       </div>
     </transition>
@@ -28,21 +29,24 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import HomeTab from '@/tabs/HomeTab.vue';
 import QuestionTab from '@/tabs/question/QuestionTab.vue';
+import FeedbackTab from "@/tabs/feedback/FeedbackTab.vue";
 import { mapState, mapMutations } from 'vuex';
-import { QUESTION_TAB_NAME, HOME_TAB_NAME } from "@/constants/tab.constants.js";
+import { QUESTION_TAB_NAME, HOME_TAB_NAME, FEEDBACK_TAB_NAME } from "@/constants/tab.constants.js";
 export default {
   name: "App",
   components: {
     DefaultLayout,
     HomeTab,
-    QuestionTab
+    QuestionTab,
+    FeedbackTab
   },
   data() {
     return {
       showBtnVisible: true,
-      popupVisible: true,
+      popupVisible: false,
       QUESTION_TAB_NAME,
-      HOME_TAB_NAME
+      HOME_TAB_NAME,
+      FEEDBACK_TAB_NAME
     }
   },
   computed: {
