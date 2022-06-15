@@ -1,0 +1,24 @@
+.paroter-container {
+  font-family: Arial, Helvetica, sans-serif;
+  * {
+    box-sizing: border-box;
+    outline: none;
+  }
+  button {
+    cursor: pointer;
+  }
+  input,
+  textarea {
+    width: 100%;
+    border-radius: $radius-four;
+    border: 2px solid $gray-one;
+    padding: 10px;
+  }
+  input {
+    height: 36px;
+  }
+  textarea {
+    height: 60px;
+    resize: vertical;
+  }
+}

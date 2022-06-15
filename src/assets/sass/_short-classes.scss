@@ -1,0 +1,48 @@
+[vertical-center] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+[horizontal-center] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  &--white {
+    background-color: $white;
+  }
+  &--gray {
+    background-color: $gray-one;
+  }
+}
+
+.big-btn {
+  padding: 17px 0;
+  border-radius: $radius-one;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  &--gray {
+    background-color: $gray-one;
+    color: $black;
+  }
+  &--blue {
+    background-color: $blue-one;
+    color: $white;
+  }
+}
+.form-control {
+  width: 100%;
+  p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+}
