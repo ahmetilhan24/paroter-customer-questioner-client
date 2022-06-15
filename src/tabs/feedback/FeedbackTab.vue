@@ -5,7 +5,7 @@
         class="rating-0"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 0"
+        v-if="feedbackData.rate === 0"
       >
         <circle cx="256" cy="256" r="256" fill="#ffd93b" />
         <path
@@ -69,7 +69,7 @@
         class="rating-1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 1"
+        v-if="feedbackData.rate === 1"
       >
         <circle cx="256" cy="256" r="256" fill="#ffd93b" />
         <path
@@ -117,7 +117,7 @@
         class="rating-2"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 2"
+        v-if="feedbackData.rate === 2"
       >
         <circle cx="256" cy="256" r="256" fill="#ffd93b" />
         <path
@@ -159,7 +159,7 @@
         class="rating-3"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 3"
+        v-if="feedbackData.rate === 3"
       >
         <circle cx="256" cy="256" r="256" fill="#ffd93b" />
         <path
@@ -201,7 +201,7 @@
         class="rating-4"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 4"
+        v-if="feedbackData.rate === 4"
       >
         <circle cx="256" cy="256" r="256" fill="#ffd93b" />
         <path
@@ -245,7 +245,7 @@
         class="rating-5"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        v-if="rate === 5"
+        v-if="feedbackData.rate === 5"
       >
         <g fill="#ffd93b">
           <circle cx="256" cy="256" r="256" />
@@ -290,14 +290,14 @@
         />
       </svg>
     </div>
-    <div class="feedback-tab__inputs">
+    <div class="feedback-tab__inputs" v-if="!isSubmited">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         v-for="item in 5"
         :key="item"
         @click="selectRate(item)"
-        :class="{ selected: rate >= item }"
+        :class="{ selected: feedbackData.rate >= item }"
       >
         <path
           fill="none"
@@ -310,19 +310,33 @@
         />
       </svg>
     </div>
+    <div class="feedback-response" v-if="isSubmited">
+      <p>Thanks for your feedback</p>
+    </div>
   </section>
 </template>
 <script lang="js">
+import { sendFeedback } from '@/services/feedback.service';
 export default {
     name: "FeedbackTab",
     data() {
         return{
+          feedbackData: {
             rate: 0
+          },
+          isSubmited: false
         }
     },
     methods: {
         selectRate(value) {
-            this.rate = value;
+            this.feedbackData.rate = value;
+            this.send();
+        },
+        async send(){
+          const res = await sendFeedback(this.feedbackData);
+          if(res) {
+            this.isSubmited = true;
+          }
         }
     }
 }
@@ -350,6 +364,13 @@ export default {
           stroke: #f4c534;
         }
       }
+    }
+  }
+  .feedback-response {
+    text-align: center;
+    img {
+      width: 80px;
+      fill: $blue-one;
     }
   }
 }
