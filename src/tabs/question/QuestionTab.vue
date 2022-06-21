@@ -1,6 +1,6 @@
 <template>
   <section class="question-tab">
-    <div class="ask-form" v-if="!isSubmited">
+    <div class="ask-form" v-if="!isSubmitted">
       <div class="form-control">
         <p>Full name</p>
         <input v-model="askData.full_name" placeholder="John doe" type="text" />
@@ -22,7 +22,7 @@
       </div>
       <button class="big-btn big-btn--blue" @click="send">Send</button>
     </div>
-    <div class="ask-response" v-if="isSubmited">
+    <div class="ask-response" v-if="isSubmitted">
       <img
         src="@/assets/icons/envelope-circle-check-solid.svg"
         alt="Mail sended"
@@ -34,6 +34,7 @@
 
 <script lang="js">
 import { sendAsk } from '@/services/ask.service';
+import { mapMutations } from 'vuex';
 export default {
   name: "QuestionTab",
   data(){
@@ -43,14 +44,19 @@ export default {
         email: "",
         message: ""
       },
-      isSubmited: false
+      isSubmitted: false
     }
   },
   methods: {
+    ...mapMutations({
+      setIsLoaderVisible: "setIsLoaderVisible"
+    }),
     async send(){
+      this.setIsLoaderVisible(true);
       const res = await sendAsk(this.askData);
-      if(res.status === 201) {
-        this.isSubmited = true;
+      this.setIsLoaderVisible(false)
+      if(res) {
+        this.isSubmitted = true;
       }
     }
   }

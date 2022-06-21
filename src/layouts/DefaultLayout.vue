@@ -14,7 +14,7 @@ export default {
     name: "DefaultLayout",
     components: {
         AppHeader,
-        AppFooter
+        AppFooter,
     }
 }
 </script>

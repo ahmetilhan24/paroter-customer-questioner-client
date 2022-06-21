@@ -7,6 +7,7 @@
           <home-tab v-if="activeTab === HOME_TAB_NAME" />
           <question-tab v-if="activeTab === QUESTION_TAB_NAME" />
           <feedback-tab v-if="activeTab === FEEDBACK_TAB_NAME" />
+          <app-loader />
         </default-layout>
       </div>
     </transition>
@@ -28,13 +29,15 @@ import QuestionTab from '@/tabs/question/QuestionTab.vue';
 import FeedbackTab from "@/tabs/feedback/FeedbackTab.vue";
 import { mapState, mapMutations } from 'vuex';
 import { QUESTION_TAB_NAME, HOME_TAB_NAME, FEEDBACK_TAB_NAME } from "@/constants/tab.constants.js";
+import AppLoader from '@/components/AppLoader.vue'
 export default {
   name: "App",
   components: {
     DefaultLayout,
     HomeTab,
     QuestionTab,
-    FeedbackTab
+    FeedbackTab,
+    AppLoader
   },
   data() {
     return {
@@ -86,6 +89,7 @@ export default {
   bottom: 30px;
   .paroter-popup {
     width: 100%;
+    position: relative;
   }
   .show-button {
     width: 50px;

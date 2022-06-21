@@ -290,7 +290,7 @@
         />
       </svg>
     </div>
-    <div class="feedback-tab__inputs" v-if="!isSubmited">
+    <div class="feedback-tab__inputs" v-if="!isSubmitted">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -310,13 +310,14 @@
         />
       </svg>
     </div>
-    <div class="feedback-response" v-if="isSubmited">
+    <div class="feedback-response" v-if="isSubmitted">
       <p>Thanks for your feedback</p>
     </div>
   </section>
 </template>
 <script lang="js">
 import { sendFeedback } from '@/services/feedback.service';
+import { mapMutations } from 'vuex';
 export default {
     name: "FeedbackTab",
     data() {
@@ -324,19 +325,24 @@ export default {
           feedbackData: {
             rate: 0
           },
-          isSubmited: false
+          isSubmitted: false
         }
     },
     methods: {
+      ...mapMutations({
+        setIsLoaderVisible: "setIsLoaderVisible"
+      }),
         selectRate(value) {
             this.feedbackData.rate = value;
             this.send();
         },
         async send(){
+          this.setIsLoaderVisible(true);
           const res = await sendFeedback(this.feedbackData);
           if(res) {
-            this.isSubmited = true;
+           this.isSubmitted = true;
           }
+          this.setIsLoaderVisible(false)
         }
     }
 }
