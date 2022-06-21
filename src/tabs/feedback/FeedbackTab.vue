@@ -317,6 +317,7 @@
 </template>
 <script lang="js">
 import { sendFeedback } from '@/services/feedback.service';
+import { mapMutations } from 'vuex';
 export default {
     name: "FeedbackTab",
     data() {
@@ -328,15 +329,20 @@ export default {
         }
     },
     methods: {
+      ...mapMutations({
+        setIsLoaderVisible: "setIsLoaderVisible"
+      }),
         selectRate(value) {
             this.feedbackData.rate = value;
             this.send();
         },
         async send(){
+          this.setIsLoaderVisible(true);
           const res = await sendFeedback(this.feedbackData);
           if(res) {
-            this.isSubmited = true;
+           this.isSubmited = true;
           }
+          this.setIsLoaderVisible(false)
         }
     }
 }
