@@ -290,7 +290,7 @@
         />
       </svg>
     </div>
-    <div class="feedback-tab__inputs" v-if="!isSubmited">
+    <div class="feedback-tab__inputs" v-if="!isSubmitted">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -310,7 +310,7 @@
         />
       </svg>
     </div>
-    <div class="feedback-response" v-if="isSubmited">
+    <div class="feedback-response" v-if="isSubmitted">
       <p>Thanks for your feedback</p>
     </div>
   </section>
@@ -325,7 +325,7 @@ export default {
           feedbackData: {
             rate: 0
           },
-          isSubmited: false
+          isSubmitted: false
         }
     },
     methods: {
@@ -340,7 +340,7 @@ export default {
           this.setIsLoaderVisible(true);
           const res = await sendFeedback(this.feedbackData);
           if(res) {
-           this.isSubmited = true;
+           this.isSubmitted = true;
           }
           this.setIsLoaderVisible(false)
         }
