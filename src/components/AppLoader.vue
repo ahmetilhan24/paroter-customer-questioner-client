@@ -11,7 +11,7 @@
 <script lang="js">
 import { mapState } from 'vuex';
 export default {
-  name: "AppPreloder",
+  name: "AppLoader",
   computed:  {
     ...mapState({
       isLoaderVisible: store => store.modals.isLoaderVisible
