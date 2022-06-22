@@ -1,5 +1,19 @@
 {
   "name": "paroter-customer-questioner-client",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^[^.]+.vue$": "vue-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +21,10 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
@@ -20,11 +38,16 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "prettier": "^2.4.1",
+    "jest": "^27.0.5",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0"
   }
